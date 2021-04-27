@@ -1,0 +1,7 @@
+pip==21.1
+numpy==1.18.4
+pandas==1.2.3
+streamlit==0.80.0
+bert-serving-server==1.10.0
+bert-serving-client==1.10.0
+tensorflow-cpu==1.15.0
