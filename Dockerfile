@@ -11,12 +11,9 @@ WORKDIR /code
 COPY requirements.txt .
 RUN pip install -r ./requirements.txt
 
-# copy the dependencies file to the working directory
-COPY app.py bert.py heroku.yml Procfile setup.sh ./
-
-# copy the data (move this higher if the data doesn't change much)
-COPY data ./data
+# copy everything to the working directory
+COPY . .
 
 # command to run on container start
 EXPOSE 8501
-CMD [ "python", "./app.py" ]
+CMD [ "streamlit", "run", "app.py" ]
