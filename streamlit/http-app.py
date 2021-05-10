@@ -6,7 +6,7 @@ import requests
 base_questions = pd.read_csv('data/faqs.csv')
 
 def encode(j_data):
-    url = 'http://localhost:8125/encode'
+    url = 'http://bert:8125/encode'
     return requests.post(url, json=j_data)
 
 st.set_page_config(layout="wide")
