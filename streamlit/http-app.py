@@ -33,14 +33,17 @@ def init():
 
 init()
 
-def get(q, min_score = 0.9):
+def get(q, min_score = 0.75):
     json_response = encode({'id': 567, 'texts': q}).json()
-    print(json_response)
+    # print(json_response)
     query_vector = np.array(json_response.get('result'))
 
     score = np.sum((query_vector * np.load("questions.npy")), axis=1) / (
         np.load("questions_len.npy") * (np.sum(query_vector * query_vector) ** 0.5)
     )
+
+    score = 0.999998927883627 * score ** 11.3969752
+
     top_id = np.argsort(score)[::-1][0]
 
     data = pd.read_csv('data/faqs.csv')
